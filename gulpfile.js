@@ -65,8 +65,6 @@ gulp.task("minify", function(){
 //===========================================================================
 // Следить за файлами и запускать таски при их изменении ( File Watcher )
 gulp.task("default", function(){
-	console.log("\nЖенька молодец\n");
-
 	gulp.watch(paths.styles.src).on("change", gulp.series("style"));
 	// gulp.watch("./*.php").on("change", reload);
 	// gulp.watch(paths.js.src).on("change", reload);
