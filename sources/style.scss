@@ -1,0 +1,204 @@
+$red : red;
+$blue : blue;
+$gray : gray;
+$green : green;
+$orange : orange;
+$transition : .5s;
+
+@import "./fonts/AvantGarde/stylesheet.css";
+
+body{
+	color       : rgb(69, 69, 69);
+	margin      : 0;
+	font-size   : 16px;
+	min-width   : 1024px;
+	text-align  : center;
+	min-height  : 100vh;
+	font-family : "Avant Garde Gothic Std", sans-serif;
+	
+	&[data-content-color="red"]{
+		.logo, .link, h3{ color : $red; }
+		
+		.slider__item.active:after{ background-color : $red; }
+		
+		.slider__buttons__item{ background-color : $red; }
+	}
+	
+	&[data-content-color="green"]{
+		.logo, .link, h3{ color : $green; }
+		
+		.slider__item.active:after{ background-color : $green; }
+		
+		.slider__buttons__item{ background-color : $green; }
+	}
+	
+	&[data-content-color="blue"]{
+		.logo, .link, h3{ color : $blue; }
+		
+		.slider__item.active:after{ background-color : $blue; }
+		
+		.slider__buttons__item{ background-color : $blue; }
+	}
+	
+	&[data-content-color="orange"]{
+		.logo, .link, h3{ color : $orange; }
+		
+		.slider__item.active:after{ background-color : $orange; }
+		
+		.slider__buttons__item{ background-color : $orange; }
+	}
+}
+
+header{
+	display         : flex;
+	padding         : 16px 12.5%;
+	align-items     : center;
+	justify-content : space-between;
+}
+
+.logo{
+	font-size   : 2em;
+	font-weight : bold;
+}
+
+.burger{
+	$height : 2px;
+	$width : 24px;
+	width            : $width;
+	border           : none;
+	padding          : 0;
+	background-color : transparent;
+	
+	span{
+		height           : $height;
+		display          : block;
+		position         : relative;
+		background-color : $gray;
+	}
+	
+	&:before, &:after{
+		height           : $height;
+		content          : "";
+		display          : block;
+		background-color : $gray;
+	}
+	
+	&:before{
+		$dif : 12px;
+		width         : $width + $dif;
+		margin-left   : -$dif;
+		margin-bottom : $height * 2;
+	}
+	
+	&:after{
+		margin-top : $height * 2;
+	}
+}
+
+.logo, .link, h3, .slider__buttons__item{
+	transition : $transition;
+}
+
+h1{
+	margin      : 0;
+	font-size   : 59.747px;
+	line-height : 0.502;
+}
+
+h2{
+	font-size   : 26px;
+	line-height : 1.154;
+	font-weight : normal;
+}
+
+h3{
+	font-size      : 22.71px;
+	line-height    : 1.321;
+	text-transform : uppercase;
+}
+
+main{
+	height : 100%;
+}
+
+.slider{
+	$img_size : 250px;
+	height     : $img_size * 1.5;
+	position   : relative;
+	text-align : left;
+	
+	&__item{
+		position : relative;
+		
+		.slider__img{
+			width  : $img_size;
+			height : $img_size;
+		}
+		
+		&:not(.active) .slider__img{
+			-webkit-filter : grayscale(100%);
+			-moz-filter    : grayscale(100%);
+			-ms-filter     : grayscale(100%);
+			-o-filter      : grayscale(100%);
+			filter         : grayscale(100%);
+			filter         : gray; /* IE 6-9 */
+		}
+		
+		&:after{
+			width            : 125%;
+			height           : 100%;
+			content          : "";
+			display          : block;
+			z-index          : -1;
+			position         : absolute;
+			transform        : rotateX(65deg);
+			margin-top       : -75%;
+			transition       : $transition;
+			margin-left      : -15%;
+			border-radius    : 50%;
+			background-color : $gray;
+		}
+	}
+	
+	&__buttons{
+		$size : 24px;
+		$offset : 5%;
+		top      : calc(50% - #{$size / 2});
+		z-index  : 222;
+		position : relative;
+		
+		&__item{
+			width         : $size;
+			height        : $size;
+			color         : white;
+			border        : none;
+			position      : absolute;
+			font-size     : 2em;
+			background    : transparent;
+			line-height   : 0;
+			border-radius : 50%;
+			
+			span{
+				height    : 100%;
+				display   : block;
+				transform : translate(0, 37.5%);
+			}
+		}
+		
+		.left{
+			left : $offset;
+		}
+		
+		.right{
+			right     : $offset;
+			transform : rotate(-180deg);
+		}
+	}
+}
+
+p{
+	max-width    : 810px;
+	line-height  : 1.75;
+	margin-left  : auto;
+	margin-right : auto;
+}
